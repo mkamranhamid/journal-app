@@ -1,0 +1,212 @@
+.main-page {
+    width: 100%;
+    height: 100vh;
+    /* background-color: #3a3a3a;  */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-left-portion {
+    width: 50%;
+    height: 100%;
+    background-color: #1c1a2c;
+    /* right align div */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.left-portion-right {
+    width: 80%;
+    height: 80%;
+    /* background-color: #fff; */
+    border: 30px solid #b3b3b3;
+    border-right: none;
+    /* border-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50'><defs><linearGradient id='redgradient'><stop offset='0' stop-color='%23FFC14D'/><stop offset='0.362' stop-color='%23FF4834'/><stop offset='1' stop-color='%233B0300'/></linearGradient></defs><g id='Layer_1'><path d='M0,0 L50,0 L50,50 L0,50 L0,0 z' fill='url(%23redgradient)' width='100%' height='100%'/></g></svg>") 20% stretch;
+    border-image-slice: 20 22;
+    border-image-repeat: round; */
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.main-container {
+    width: 100%;
+    /* margin: 50px auto; */
+    /* border: 2px solid #999; */
+    padding: 30px 30px 40px;
+}
+
+.header {
+    text-align: left;
+    font-size: 3em;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: #fff;
+}
+
+.inputContainer {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    /* margin: 20px auto 0; */
+    /* background-color: #fbfbfb; */
+}
+
+.labelContainer .label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    font-size: 16px;
+    color: #999;
+    transform-origin: 0 0;
+    transition: all 0.2s ease;
+}
+
+.labelContainer .border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: #b857ff;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: all 0.15s ease;
+}
+
+.labelContainer input {
+    width: 99%;
+    border: 0;
+    height: 36px;
+    font-size: 16px;
+    border-bottom: 2px solid #999;
+    background: none;
+    color: #223254;
+    transition: all 0.15s ease;
+}
+
+.labelContainer input:hover {
+    background: rgba(34, 50, 84, 0.01);
+}
+
+.labelContainer input:not(:placeholder-shown)+span {
+    color: #5a667f;
+    transform: translateY(-26px) scale(0.75);
+}
+
+.labelContainer input:focus {
+    background: none;
+    outline: none;
+}
+
+.labelContainer input:focus+span {
+    color: #b857ff;
+    transform: translateY(-26px) scale(0.75);
+}
+
+.labelContainer input:focus+span+.border {
+    transform: scaleX(1);
+}
+
+.rememberMeContainer {
+    font-size: 12px;
+    width: 100%;
+    max-width: 300px;
+    height: 40px;
+    margin: 10px auto;
+}
+
+.button {
+    font-size: 1em;
+    text-transform: uppercase;
+    width: 200px;
+    /* margin: auto; */
+    height: 50px;
+    border: none;
+    background-color: #b3b3b3;
+    color: white;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.button:hover {
+    opacity: .9;
+}
+
+.btn-group {
+    margin-top: 10px;
+}
+
+.header~form {
+    margin-top: 35px;
+}
+
+.auth-links {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.auth-links .link {
+    padding: 15px;
+    color: #fff;
+}
+
+.username-field-btn {
+    display: flex;
+    justify-content: center;
+}
+
+/* Media Queries */
+
+@media (min-width:320px) and (max-width:480px) {
+    /* .login-page {
+        width: 100%;
+    } */
+    .main-left-portion {
+        width: 100%;
+        justify-content: center;
+    }
+    .left-portion-right {
+        border-right: 30px solid #b3b3b3;
+    }
+    .button {
+        width: 100%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    /* .login-page {
+        width: 100%;
+    } */
+    .main-left-portion {
+        width: 100%;
+        justify-content: center;
+    }
+    .left-portion-right {
+        border-right: 30px solid #b3b3b3;
+    }
+    .button {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* .login-page {
+        width: 100%;
+    } */
+    .main-left-portion {
+        width: 100%;
+        justify-content: center;
+    }
+    .left-portion-right {
+        border-right: 30px solid #b3b3b3;
+    }
+    .button {
+        width: 100%;
+    }
+}

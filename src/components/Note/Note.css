@@ -1,0 +1,36 @@
+.note-container {
+    margin: 10px;
+}
+
+.note-text-wrap {
+    width: 230px;
+    height: 130px;
+    background-color: #28253b;
+    border: 1px solid transparent;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 10px;
+}
+
+.note-text-wrap h4 {
+    color: #fff;
+    /* margin: 0; */
+}
+
+.note-text-wrap p {
+    color: #757575;
+    font-size: 0.8em;
+}
+
+.note-header {
+    width: 252px;
+    height: 10px;
+    background-color: aliceblue;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.note-footer {
+    display: flex;
+    justify-content: space-between;
+}
