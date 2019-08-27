@@ -18,3 +18,27 @@ a:hover, a:focus {
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
+
+.word-break {
+    word-break: break-word;
+}
+
+.f-r {
+    float: right;
+}
+
+.f-l {
+    float: left;
+}
+
+.red {
+    color: #da2727;
+}
+
+.gray {
+    color: #757575;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

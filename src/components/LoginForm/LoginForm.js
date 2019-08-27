@@ -18,9 +18,9 @@ function LoginForm({ show, onFormSubmit }) {
             <div className="header">Sign in</div>
             <form onSubmit={handleSubmit}>
                 <div className="inputContainer">
-                    <label htmlFor="username" className="labelContainer">
-                        <input type="text" id="username" placeholder="&nbsp;" autoComplete="new-password" onChange={e => setEmail(e.target.value)} />
-                        <span className="label">Username</span>
+                    <label htmlFor="email" className="labelContainer">
+                        <input type="text" id="email" placeholder="&nbsp;" autoComplete="new-password" onChange={e => setEmail(e.target.value)} />
+                        <span className="label">Email</span>
                         <span className="border"></span>
                     </label>
                 </div>

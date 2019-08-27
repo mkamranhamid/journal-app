@@ -1,6 +1,7 @@
 import * as config from '../config/config.json';
 import * as toastr from 'toastr';
 import '../toastr.css';
+import { TOKEN_KEY } from './constants.js';
 
 console.log("config :", config);
 const metaData = {
@@ -35,6 +36,10 @@ export function setLocalStorage(key, value) {
     return localStorage.setItem(key, value);
 }
 
+export function removeLocalStorage(key) {
+    return localStorage.removeItem(key);
+}
+
 export const getKey = (key) => {
     key = key.trim();
     return config[key];
@@ -53,6 +58,11 @@ export function toastCreate(toastType, message) {
 export function toastSuccess(message) {
     toastCreate('success', message)
 }
+
 export function toastError(message) {
     toastCreate('error', message)
+}
+
+export function removeToken() {
+    removeLocalStorage(TOKEN_KEY);
 }

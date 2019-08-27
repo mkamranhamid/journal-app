@@ -121,6 +121,8 @@
 }
 
 .button {
+    outline: none;
+    cursor: pointer;
     font-size: 1em;
     text-transform: uppercase;
     width: 200px;

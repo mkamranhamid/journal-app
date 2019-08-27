@@ -36,3 +36,63 @@ export function checkUsernameAvailability({ username }) {
         }
     `
 }
+
+export function getJournals() {
+    return `
+        query {
+            journals{
+                id
+                body
+                title
+                createdAt
+            }
+        }
+    `
+}
+
+export function addJournal({ body, title }) {
+    return `
+        mutation {
+            journalCreate(title: "${title}", body: "${body}"){
+                title
+                body
+                createdAt
+            }
+        }
+    `
+}
+
+export function removeJournal({ id }) {
+    return `
+        mutation {
+            journalDelete(id: "${id}"){
+                id
+                title
+                body
+            }
+        }
+    `
+}
+
+export function logoutQry() {
+    return `
+        mutation {
+            logout{
+                message
+            }
+        }
+    `
+}
+
+export function editJournal({ id, body, title }) {
+    return `
+        mutation {
+            journalUpdate(id: "${id}",body:"${body}",title:"${title}"){
+                id
+                title
+                body
+                createdAt
+            }
+        }
+    `
+}

@@ -1,15 +1,16 @@
 .note-container {
     margin: 10px;
+    width: 250px;
 }
 
 .note-text-wrap {
-    width: 230px;
+    width: 100%;
     height: 130px;
     background-color: #28253b;
     border: 1px solid transparent;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .note-text-wrap h4 {
@@ -23,7 +24,7 @@
 }
 
 .note-header {
-    width: 252px;
+    width: 100%;
     height: 10px;
     background-color: aliceblue;
     border-top-right-radius: 5px;
@@ -33,4 +34,32 @@
 .note-footer {
     display: flex;
     justify-content: space-between;
+}
+
+.note-content {
+    padding: 10px;
+}
+
+.edit-icon {
+    margin-right: 5px;
+}
+
+/* Media Queries */
+
+@media (min-width:320px) and (max-width:480px) {
+    .note-container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .note-container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .note-container {
+        width: 100%;
+    }
 }

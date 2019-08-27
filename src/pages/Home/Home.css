@@ -2,6 +2,7 @@
     background-color: #1c1a2c;
     min-height: 100vh;
     color: #fff;
+    padding: 10px;
 }
 
 .home-container {
@@ -53,4 +54,45 @@
 
 .home-title {
     margin: 15px 0;
+}
+
+.home-title-container {
+    display: flex;
+}
+
+.add-icon {
+    margin: auto 15px;
+    cursor: pointer;
+}
+.add-icon:hover {
+    color: #757575; 
+}
+
+/* Media Queries */
+
+@media (min-width:320px) and (max-width:480px) {
+    .home-title {
+        text-align: center;
+    }
+    .home-notes-wrap {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .home-title {
+        text-align: center;
+    }
+    .home-notes-wrap {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .home-title {
+        text-align: center;
+    }
+    .home-notes-wrap {
+        justify-content: center;
+    }
 }

@@ -11,21 +11,43 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Redirect exact from="/" to="/login" />
+        <Redirect exact from="/" to="/auth" />
         {/* <Route path="/home" component={HomePage} /> */}
-        <Route path="/login" component={AuthPage} />
-        <Route path="/register" component={RegisterPage} />
-        <PrivateRoute path="/home" component={HomePage} />
+        {/* <Route path="/auth" component={AuthPage} /> */}
+        {/* <Route path="/register" component={RegisterPage} /> */}
+        <AuthLogic />
       </Switch>
     </BrowserRouter>
   );
 }
 
-function PrivateRoute({ component, path }) {
+function PrivateRoute({ }) {
   const isLoggedIn = localStorage.getItem('@gql:token') ? true : false;
   return (
-    isLoggedIn ? <Route path="/home" component={HomePage} /> : <Redirect to="/login" />
+    <div>
+      <Redirect exact from="/" to="/home" />
+      <Route path="/home" component={HomePage} />
+    </div>
   );
 }
+
+function PublicRoutes({ }) {
+  const isLoggedIn = localStorage.getItem('@gql:token') ? true : false;
+  return (
+    <div>
+      <Redirect exact from="/" to="/auth" />
+      <Route path="/auth" component={AuthPage} />
+    </div>
+  );
+}
+
+function AuthLogic({ }) {
+  const isLoggedIn = localStorage.getItem('@gql:token') ? true : false;
+  return (
+    isLoggedIn ? <PrivateRoute /> : <PublicRoutes />
+  );
+}
+
+
 
 export default App;
