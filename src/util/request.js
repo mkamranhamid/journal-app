@@ -1,7 +1,10 @@
 
 import { getKey, getLocalStorage, toastError } from './common';
-import { TOKEN_KEY, BASE_URL } from './constants';
+import { TOKEN_KEY } from './constants';
+import appconfig from '../config/config.json';
 
+var config = appconfig[process.env.NODE_ENV];
+console.log("CONFIG: ", config);
 /**
  * Parses the JSON returned by a network request
  *
@@ -79,7 +82,7 @@ function createOptions(method, header, queryString) {
 
 function createUrl(path, param) {
     // let url = getKey('api');
-    let url = BASE_URL;
+    let url = config['api'];
     url = `${url}/graphql`;
     return url;
 }

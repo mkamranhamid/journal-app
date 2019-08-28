@@ -1,3 +1,8 @@
 {
-    "api": "https://pacific-beyond-22917.herokuapp.com/"
+    "development": {
+        "api": "http://localhost:4000"
+    },
+    "production": {
+        "api": "https://pacific-beyond-22917.herokuapp.com"
+    }
 }
