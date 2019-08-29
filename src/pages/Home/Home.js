@@ -18,6 +18,7 @@ import { request } from "../../util/request";
 import Note from "../../components/Note/Note";
 import CreateJournal from "../../Modals/CreateJournal";
 import EditJournal from "../../Modals/EditJournal";
+import DescJournal from "../../Modals/DescJournal";
 import "./Home.css";
 
 library.add(
@@ -38,8 +39,10 @@ export default class Home extends Component {
             journals: [],
             showModal: false,
             showEditModal: false,
+            showDescModal: false,
             loading: true,
-            edit: {}
+            edit: {},
+            desc: {},
         }
         this.fetchAllJournals();
     }
@@ -69,6 +72,10 @@ export default class Home extends Component {
         this.setState({ showEditModal: true, edit: editState });
     }
 
+    handleOnJournalDesc({ data }) {
+        this.setState({ showDescModal: true, desc: data });
+    }
+
     loopThruNotes() {
         if (this.state.loading) return <h4>Loading...</h4>
         if (this.state.journals.length == 0) return <h4>No Notes has yet been created. Start your notes</h4>
@@ -77,6 +84,7 @@ export default class Home extends Component {
                 data={{ ...d, index: i }}
                 onRemove={(index) => this.handleOnJournalRemove(index)}
                 onEdit={(data) => this.handleOnJournalEdit(data)}
+                click={(data) => this.handleOnJournalDesc(data)}
                 key={i} />
         })
     }
@@ -174,6 +182,10 @@ export default class Home extends Component {
                         show={this.state.showEditModal}
                         onClose={() => this.setState({ showEditModal: !this.state.showEditModal })}
                         onSubmit={(fields) => this.handleEditJournal(fields)} />}
+                    {this.state.showDescModal && <DescJournal
+                        data={this.state.desc}
+                        show={this.state.showDescModal}
+                        onClose={() => this.setState({ showDescModal: !this.state.showDescModal })} />}
                 </div>
             </div>
         )

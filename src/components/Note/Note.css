@@ -1,6 +1,7 @@
 .note-container {
     margin: 10px;
     width: 250px;
+    font-size: 0.8em;
 }
 
 .note-text-wrap {
@@ -16,11 +17,6 @@
 .note-text-wrap h4 {
     color: #fff;
     /* margin: 0; */
-}
-
-.note-text-wrap p {
-    color: #757575;
-    font-size: 0.8em;
 }
 
 .note-header {
@@ -42,6 +38,18 @@
 
 .edit-icon {
     margin-right: 5px;
+}
+
+.block-with-text {
+    color: #757575;
+    height: 70px;
+    margin: 7px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.block-with-text:after {
+    content: "\02026";
 }
 
 /* Media Queries */

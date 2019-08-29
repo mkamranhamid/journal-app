@@ -15,14 +15,14 @@ library.add(
     faPenAlt,
 )
 
-const Note = ({ data, onRemove, onEdit }) => {
+const Note = ({ data, onRemove, onEdit, click }) => {
     const color = randomcolor();
     const { title, body, createdAt } = data;
     return (
-        <div className="note-container">
+        <div className="note-container" >
             <div className="note-header" style={{ backgroundColor: color }}></div>
 
-            <div className="note-text-wrap">
+            <div className="note-text-wrap" onClick={() => click({ data, index: data.index })}>
                 <div className="note-content">
                     <div className="f-r red cursor-pointer" onClick={() => onRemove({ id: data.id, index: data.index })}>
                         <FontAwesomeIcon
@@ -39,10 +39,10 @@ const Note = ({ data, onRemove, onEdit }) => {
                         />
                     </div>
                     <h4 className="word-break">{title}</h4>
-                    <p>
+                    <p className="block-with-text word-break">
                         {body}
                     </p>
-                    <div className="note-footer">
+                    <div className="note-footer" >
                         <p className="date">{moment(+createdAt).format('DD.MM.YY')}</p>
                         <p className="time">{moment(+createdAt).format('h:mm a').toLocaleUpperCase()}</p>
                     </div>
