@@ -25,7 +25,7 @@ function PrivateRoute({ }) {
   const isLoggedIn = localStorage.getItem('@gql:token') ? true : false;
   return (
     <div>
-      <Redirect exact from="/" to="/home" />
+      <Redirect from="/" to="/home" />
       <Route path="/home" component={HomePage} />
     </div>
   );
@@ -35,7 +35,7 @@ function PublicRoutes({ }) {
   const isLoggedIn = localStorage.getItem('@gql:token') ? true : false;
   return (
     <div>
-      <Redirect exact from="/" to="/auth" />
+      <Redirect from="/" to="/auth" />
       <Route path="/auth" component={AuthPage} />
     </div>
   );
