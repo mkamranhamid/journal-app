@@ -15,7 +15,8 @@ export default class Login extends Component {
         super(props);
         this.state = {
             view: 'signin',
-            usernameAvailable: false
+            usernameAvailable: false,
+            loading: false
         }
     }
 
@@ -25,28 +26,46 @@ export default class Login extends Component {
 
     handleChangeView(e, view) {
         this.setState({ view: view });
-        toastSuccess('view has been changed ' + view);
+        // toastSuccess('view has been changed ' + view);
     }
 
     async handleFormSubmitLogin(fields, view) {
+        this.setState({ loading: true });
         const { email, password } = fields;
         const queryStr = loginQuery(fields);
-        const loginRequest = await request(queryStr, false);
-        if (loginRequest.login) {
-            setLocalStorage(TOKEN_KEY, loginRequest.login.token);
-            toastSuccess(`Successfully logged in`);
-            this.props.history.replace('home');
+        try {
+            const { login } = await request(queryStr, false);
+            if (login) {
+                setLocalStorage(TOKEN_KEY, login.token);
+                toastSuccess(`Successfully logged in`);
+                this.props.history.replace('home');
+            }
         }
+        catch (err) {
+            console.log(" catch err: ", err);
+        }
+        this.setState({ loading: false });
     }
     async handleFormSubmitRegister(fields, view) {
+        this.setState({ loading: true });
         if (!this.state.usernameAvailable) {
             toastError('Valid username field is required');
+            this.setState({ loading: false });
             return
         };
         const { firstname, lastname, email, username, password } = fields;
         const queryStr = registerQuery(fields);
-        const userRegistered = await request(queryStr, false);
-        toastSuccess('User has been created');
+        try {
+            const { register } = await request(queryStr, false);
+            if (register) {
+                setLocalStorage(TOKEN_KEY, register.token);
+                toastSuccess('User has been created');
+                this.props.history.replace('home');
+            }
+        } catch (err) {
+            console.log(err);
+        }
+        this.setState({ loading: false });
     }
 
     async handleCheckUsernameAvailability(field) {
@@ -88,9 +107,14 @@ export default class Login extends Component {
                         <div className="main-container">
                             <RegisterForm show={this.state.view === 'register'}
                                 checkUsernameAvailability={(field) => this.handleCheckUsernameAvailability(field)}
-                                onFormSubmit={(fields, view) => this.handleFormSubmitRegister(fields, view)} />
-                            <LoginForm show={this.state.view === 'signin'} onFormSubmit={(fields, view) => this.handleFormSubmitLogin(fields, view)} />
-                            <ForgotForm show={this.state.view === 'forgot'} onFormSubmit={(fields, view) => this.handleFormSubmitForgot(fields, view)} />
+                                onFormSubmit={(fields, view) => this.handleFormSubmitRegister(fields, view)}
+                                loading={this.state.loading} />
+                            <LoginForm show={this.state.view === 'signin'}
+                                onFormSubmit={(fields, view) => this.handleFormSubmitLogin(fields, view)}
+                                loading={this.state.loading} />
+                            <ForgotForm show={this.state.view === 'forgot'}
+                                onFormSubmit={(fields, view) => this.handleFormSubmitForgot(fields, view)}
+                                loading={this.state.loading} />
                             {this.generateAuthFooterLinks()}
                         </div>
                     </div>

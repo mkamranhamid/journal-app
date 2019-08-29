@@ -42,3 +42,11 @@ h1, h2, h3, h4, h5, h6 {
 .cursor-pointer {
     cursor: pointer;
 }
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}

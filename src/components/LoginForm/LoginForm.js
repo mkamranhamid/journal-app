@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import LoadingButton from '../LoadingButton/LoadingButton';
 
 
-function LoginForm({ show, onFormSubmit }) {
+function LoginForm({ show, onFormSubmit, loading }) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,7 +20,10 @@ function LoginForm({ show, onFormSubmit }) {
             <form onSubmit={handleSubmit}>
                 <div className="inputContainer">
                     <label htmlFor="email" className="labelContainer">
-                        <input type="text" id="email" placeholder="&nbsp;" autoComplete="new-password" onChange={e => setEmail(e.target.value)} />
+                        <input type="text" id="email" placeholder="&nbsp;"
+                            autoComplete="new-password"
+                            onChange={e => setEmail(e.target.value)}
+                            disabled={loading} />
                         <span className="label">Email</span>
                         <span className="border"></span>
                     </label>
@@ -27,13 +31,17 @@ function LoginForm({ show, onFormSubmit }) {
                 <br />
                 <div className="inputContainer">
                     <label htmlFor="password" className="labelContainer">
-                        <input type="password" id="password" placeholder="&nbsp;" autoComplete="new-password" onChange={e => setPassword(e.target.value)} />
+                        <input type="password" id="password" placeholder="&nbsp;"
+                            autoComplete="new-password"
+                            onChange={e => setPassword(e.target.value)}
+                            disabled={loading} />
                         <span className="label">Password</span>
                         <span className="border"></span>
                     </label>
                 </div>
                 <div className="btn-group">
-                    <button type="submit" className="button">Login</button>
+                    <LoadingButton type="submit" disabled={loading} loading={loading}>Login</LoadingButton>
+                    {/* <button type="submit" className="button">Login</button> */}
                 </div>
             </form>
         </div>

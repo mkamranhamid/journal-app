@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-const RegisterForm = ({ show, onFormSubmit, checkUsernameAvailability }) => {
+import LoadingButton from '../LoadingButton/LoadingButton';
+
+const RegisterForm = ({ show, onFormSubmit, checkUsernameAvailability, loading }) => {
 
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
@@ -16,27 +18,44 @@ const RegisterForm = ({ show, onFormSubmit, checkUsernameAvailability }) => {
         onFormSubmit({ firstname, lastname, username, email, password }, 'register');
     }
 
+    const handleChangeUsername = (evt) => {
+        console.log(`Change Username: `, evt);
+        setUsername(evt);
+        setTimeout(() => {
+            checkUsernameAvailability(evt);
+        }, 500);
+    }
+
     return (
         <div className="register">
             <div className="header">Registeration</div>
             {/* <form onSubmit={handleSubmit}> */}
             <div className="inputContainer">
                 <label htmlFor="firstname" className="labelContainer">
-                    <input type="text" id="firstname" placeholder="&nbsp;" autoComplete="new-password" onChange={e => setFirstname(e.target.value)} />
+                    <input type="text" id="firstname" placeholder="&nbsp;"
+                        autoComplete="new-password"
+                        onChange={e => setFirstname(e.target.value)}
+                        disabled={loading} />
                     <span className="label">First Name</span>
                     <span className="border"></span>
                 </label>
             </div>
             <div className="inputContainer">
                 <label htmlFor="lastname" className="labelContainer">
-                    <input type="text" id="lastname" placeholder="&nbsp;" autoComplete="new-password" onChange={e => setLastname(e.target.value)} />
+                    <input type="text" id="lastname" placeholder="&nbsp;"
+                        autoComplete="new-password"
+                        onChange={e => setLastname(e.target.value)}
+                        disabled={loading} />
                     <span className="label">Last Name</span>
                     <span className="border"></span>
                 </label>
             </div>
             <div className="inputContainer">
                 <label htmlFor="email" className="labelContainer">
-                    <input type="email" id="email" placeholder="&nbsp;" autoComplete="new-password" onChange={e => setEmail(e.target.value)} />
+                    <input type="email" id="email" placeholder="&nbsp;"
+                        autoComplete="new-password"
+                        onChange={e => setEmail(e.target.value)}
+                        disabled={loading} />
                     <span className="label">Email</span>
                     <span className="border"></span>
                 </label>
@@ -44,22 +63,29 @@ const RegisterForm = ({ show, onFormSubmit, checkUsernameAvailability }) => {
             <div className="username-field-btn">
                 <div className="inputContainer">
                     <label htmlFor="username" className="labelContainer">
-                        <input type="text" id="username" placeholder="&nbsp;" autoComplete="new-password" onChange={e => setUsername(e.target.value)} />
+                        <input type="text" id="username" placeholder="&nbsp;"
+                            autoComplete="new-password"
+                            onChange={e => handleChangeUsername(e.target.value)}
+                            disabled={loading} />
                         <span className="label">Username</span>
                         <span className="border"></span>
                     </label>
                 </div>
-                <button onClick={(e) => checkUsernameAvailability(username)}>Check availability</button>
+                {/* <button onClick={(e) => checkUsernameAvailability(username)}>Check availability</button> */}
             </div>
             <div className="inputContainer">
                 <label htmlFor="password" className="labelContainer">
-                    <input type="password" id="password" placeholder="&nbsp;" autoComplete="new-password" onChange={e => setPassword(e.target.value)} />
+                    <input type="password" id="password" placeholder="&nbsp;"
+                        autoComplete="new-password"
+                        onChange={e => setPassword(e.target.value)}
+                        disabled={loading} />
                     <span className="label">Password</span>
                     <span className="border"></span>
                 </label>
             </div>
             <div className="btn-group">
-                <button type="button" className="button" onClick={handleSubmit}>Submit</button>
+                {/* <button type="button" className="button" onClick={handleSubmit}>Submit</button> */}
+                <LoadingButton type="button" loading={loading} onClick={handleSubmit}>Submit</LoadingButton>
             </div>
             {/* </form> */}
         </div>

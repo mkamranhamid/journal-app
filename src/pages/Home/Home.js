@@ -86,13 +86,17 @@ export default class Home extends Component {
     }
 
     async handleAddJournal(fields) {
-        const queryStr = addJournal(fields);
-        const { journalCreate } = await request(queryStr, true);
-        if (journalCreate) {
-            toastSuccess(`Successfully created journal`);
-            let journals = this.state.journals;
-            journals.push(journalCreate)
-            this.setState({ journals: journals, showModal: !this.state.showModal });
+        try {
+            const queryStr = addJournal(fields);
+            const { journalCreate } = await request(queryStr, true);
+            if (journalCreate) {
+                toastSuccess(`Successfully created journal`);
+                let journals = this.state.journals;
+                journals.push(journalCreate);
+                this.setState({ journals: journals, showModal: !this.state.showModal });
+            }
+        } catch (err) {
+            console.log("Err! ", err);
         }
     }
 

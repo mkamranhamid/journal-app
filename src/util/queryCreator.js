@@ -22,6 +22,7 @@ export function registerQuery({ firstname, lastname, username, email, password }
                 firstname
                 lastname
                 email
+                token
             }
         }
     `
@@ -57,6 +58,7 @@ export function addJournal({ body, title }) {
                 title
                 body
                 createdAt
+                id
             }
         }
     `
