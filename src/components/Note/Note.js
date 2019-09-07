@@ -18,20 +18,28 @@ library.add(
 const Note = ({ data, onRemove, onEdit, click }) => {
     const color = randomcolor();
     const { title, body, createdAt } = data;
+    const handleOnRemove = (e) => {
+        e.stopPropagation();
+        onRemove({ id: data.id, index: data.index });
+    }
+    const handleOnEdit = (e) => {
+        e.stopPropagation();
+        onEdit({ data, index: data.index });
+    }
     return (
         <div className="note-container" >
             <div className="note-header" style={{ backgroundColor: color }}></div>
 
             <div className="note-text-wrap" onClick={() => click({ data, index: data.index })}>
                 <div className="note-content">
-                    <div className="f-r red cursor-pointer" onClick={() => onRemove({ id: data.id, index: data.index })}>
+                    <div className="f-r red cursor-pointer" onClick={handleOnRemove}>
                         <FontAwesomeIcon
                             icon={['fas', 'trash-alt']}
                             fixedWidth={false}
                             size="1x"
                         />
                     </div>
-                    <div className="f-r gray cursor-pointer edit-icon" onClick={() => onEdit({ data, index: data.index })}>
+                    <div className="f-r gray cursor-pointer edit-icon" onClick={handleOnEdit}>
                         <FontAwesomeIcon
                             icon={['fas', 'pen-alt']}
                             fixedWidth={false}

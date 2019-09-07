@@ -98,3 +98,16 @@ export function editJournal({ id, body, title }) {
         }
     `
 }
+
+export function searchJournal(query) {
+    return `
+        query {
+            journalSearch(q: "${query}"){
+                id
+                title
+                body
+                createdAt
+            }
+        }
+    `
+}

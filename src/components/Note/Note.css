@@ -2,6 +2,7 @@
     margin: 10px;
     width: 250px;
     font-size: 0.8em;
+    cursor: pointer;
 }
 
 .note-text-wrap {

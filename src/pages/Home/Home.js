@@ -12,7 +12,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-import { getJournals, addJournal, removeJournal, logoutQry, editJournal } from "../../util/queryCreator";
+import { getJournals, addJournal, removeJournal, logoutQry, editJournal, searchJournal } from "../../util/queryCreator";
 import { toastSuccess, removeToken } from "../../util/common";
 import { request } from "../../util/request";
 import Note from "../../components/Note/Note";
@@ -43,6 +43,7 @@ export default class Home extends Component {
             loading: true,
             edit: {},
             desc: {},
+            search: ""
         }
         this.fetchAllJournals();
     }
@@ -130,6 +131,14 @@ export default class Home extends Component {
         }
     }
 
+    async handleSearchJournals(e) {
+        console.log(e.target.value);
+        let value = e.target.value;
+        this.setState({ search: value });
+        const queryStr = searchJournal(value);
+        const { journalSearch } = await request(queryStr, true);
+        this.setState({ journals: journalSearch });
+    }
     render() {
         return (
             <div className="home-page">
@@ -143,15 +152,15 @@ export default class Home extends Component {
                                     size="2x"
                                 />
                             </div>
-                            <input type="text" className="search-field" placeholder="Search" />
+                            <input type="text" className="search-field" placeholder="Search" onChange={(e) => this.handleSearchJournals(e)} />
                         </div>
-                        <div className="notification cursor-pointer">
+                       {/*  <div className="notification cursor-pointer">
                             <FontAwesomeIcon
                                 icon={['fas', 'bell']}
                                 fixedWidth={false}
                                 size="2x"
                             />
-                        </div>
+                        </div> */}
                         <div className="notification cursor-pointer" onClick={() => this.handleOnLogout()}>
                             <FontAwesomeIcon
                                 icon={['fas', 'sign-out-alt']}
